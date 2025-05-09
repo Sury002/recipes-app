@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // For parsing JSON in request body
+app.use(express.json()); 
 
 // Recipe routes
 app.use('/api/recipes', require('./routes/recipeRoutes'));
@@ -22,8 +22,6 @@ app.use('/api/recipes', require('./routes/recipeRoutes'));
 app.get('/', (req, res) => {
   res.send('Recipes API is running!');
 });
-
-// Recipe routes will go here later
 
 const PORT = process.env.PORT || 5000;
 
