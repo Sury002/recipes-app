@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "6ca53e70-12d0-4991-828f-fd88f772afdf",
+		"name": "Recipes API",
+		"description": "CRUD endpoints for managing recipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44790088"
+	},
+	"item": [
+		{
+			"name": "CREATE Recipe",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const recipeId = pm.response.json().data._id;\r",
+							"pm.environment.set(\"recipe_id\", recipeId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Margherita Pizza\",\r\n  \"ingredients\": [\"dough\", \"tomato sauce\", \"mozzarella\"],\r\n  \"instructions\": \"Bake at 200°C for 10 mins\",\r\n  \"preparationTime\": 30,\r\n  \"difficulty\": \"Easy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/recipes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Margherita Pizza\",\r\n  \"ingredients\": [\"dough\", \"tomato sauce\", \"mozzarella\"],\r\n  \"instructions\": \"Bake at 200°C for 10 mins\",\r\n  \"preparationTime\": 30,\r\n  \"difficulty\": \"Easy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/recipes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-OvUKE0N1UKTu1q3wj7CehLdv4lQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 17:30:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"Margherita Pizza\",\n        \"ingredients\": [\n            \"dough\",\n            \"tomato sauce\",\n            \"mozzarella\"\n        ],\n        \"instructions\": \"Bake at 200°C for 10 mins\",\n        \"preparationTime\": 30,\n        \"difficulty\": \"Easy\",\n        \"_id\": \"681cea3d50e00b536e09e8f3\",\n        \"createdAt\": \"2025-05-08T17:30:37.913Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "GET All Recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/recipes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/recipes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1318"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"526-B4EWAYkxxqSbT88vAWRJbitCu7U\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 17:37:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"count\": 5,\n    \"data\": [\n        {\n            \"_id\": \"681cc97950e00b536e09e8e4\",\n            \"name\": \"Spaghetti Carbonara\",\n            \"ingredients\": [\n                \"spaghetti\",\n                \"eggs\",\n                \"bacon\",\n                \"parmesan cheese\",\n                \"black pepper\"\n            ],\n            \"instructions\": \"1. Cook spaghetti. 2. Fry bacon. 3. Mix eggs with cheese.\",\n            \"preparationTime\": 30,\n            \"difficulty\": \"Hard\",\n            \"createdAt\": \"2025-05-08T15:10:49.033Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"681ce79650e00b536e09e8ee\",\n            \"name\": \"Margherita Pizza\",\n            \"ingredients\": [\n                \"dough\",\n                \"tomato sauce\",\n                \"mozzarella\"\n            ],\n            \"instructions\": \"Bake at 200°C for 10 mins\",\n            \"preparationTime\": 30,\n            \"difficulty\": \"Easy\",\n            \"createdAt\": \"2025-05-08T17:19:18.167Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"681ce85450e00b536e09e8f0\",\n            \"name\": \"Margherita Pizza\",\n            \"ingredients\": [\n                \"dough\",\n                \"tomato sauce\",\n                \"mozzarella\"\n            ],\n            \"instructions\": \"Bake at 200°C for 10 mins\",\n            \"preparationTime\": 30,\n            \"difficulty\": \"Easy\",\n            \"createdAt\": \"2025-05-08T17:22:28.502Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"681cea3d50e00b536e09e8f3\",\n            \"name\": \"Margherita Pizza\",\n            \"ingredients\": [\n                \"dough\",\n                \"tomato sauce\",\n                \"mozzarella\"\n            ],\n            \"instructions\": \"Bake at 200°C for 10 mins\",\n            \"preparationTime\": 30,\n            \"difficulty\": \"Easy\",\n            \"createdAt\": \"2025-05-08T17:30:37.913Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"681cea7550e00b536e09e8f5\",\n            \"name\": \"Margherita Pizza\",\n            \"ingredients\": [\n                \"dough\",\n                \"tomato sauce\",\n                \"mozzarella\"\n            ],\n            \"instructions\": \"Bake at 200°C for 10 mins\",\n            \"preparationTime\": 30,\n            \"difficulty\": \"Easy\",\n            \"createdAt\": \"2025-05-08T17:31:33.505Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Single Recipe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"{{recipe_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-YM/LxGZ2jqJ00kwc/aZrTlIBY5E\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 17:47:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"681ced6250e00b536e09e8f8\",\n        \"name\": \"Margherita Pizza\",\n        \"ingredients\": [\n            \"dough\",\n            \"tomato sauce\",\n            \"mozzarella\"\n        ],\n        \"instructions\": \"Bake at 200°C for 10 mins\",\n        \"preparationTime\": 30,\n        \"difficulty\": \"Easy\",\n        \"createdAt\": \"2025-05-08T17:44:02.567Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "UPDATE Recipe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"preparationTime\": 35\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"preparationTime\": 35\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"{{recipe_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-kjQkfWiVakvWCX9uGmPMNqeIG/s\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 17:55:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"681ced6250e00b536e09e8f8\",\n        \"name\": \"Margherita Pizza\",\n        \"ingredients\": [\n            \"dough\",\n            \"tomato sauce\",\n            \"mozzarella\"\n        ],\n        \"instructions\": \"Bake at 200°C for 10 mins\",\n        \"preparationTime\": 35,\n        \"difficulty\": \"Easy\",\n        \"createdAt\": \"2025-05-08T17:44:02.567Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE Recipe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"{{recipe_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"{{recipe_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 08 May 2025 17:59:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": " http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
